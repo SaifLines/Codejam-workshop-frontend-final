@@ -6,22 +6,19 @@ import './App.css'
 import Question from './components/Question'
 import Result from './components/Result'
 
-let data
-let promise
+let data;
+let promise;
 
-function loadData () {
+async function loadData () {
   data = undefined;
-  promise = fetch('https://opentdb.com/api.php?amount=10&category=18')
-  promise.then(response => response.json()).then(json => { data = json })
+  response = await fetch('https://opentdb.com/api.php?amount=10&category=18');
+  data = await response.json();
 }
 
-loadData()
+loadData();
 
 
 function App() {
-
-  // load the questions from the internet
-  const questionCount = 10;
 
   // if data is not yet loaded, tell react to show loading screen
   if (!data) throw promise;
