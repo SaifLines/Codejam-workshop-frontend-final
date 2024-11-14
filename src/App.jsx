@@ -9,16 +9,18 @@ import Result from './components/Result'
 let data;
 let promise;
 
-async function loadData () {
+function loadData () {
   data = undefined;
-  response = await fetch('https://opentdb.com/api.php?amount=10&category=18');
-  data = await response.json();
+  promise = fetch('https://opentdb.com/api.php?amount=10&category=18');
+  promise.then(response => response.json()).then(json => { data = json });
 }
 
-loadData();
+loadData()
 
 
 function App() {
+
+  const questionCount = 10;
 
   // if data is not yet loaded, tell react to show loading screen
   if (!data) throw promise;
