@@ -44,10 +44,12 @@ export default function Question ({ question, correctAnswer, incorrectAnswers, o
         }}>{answer}</button>
       })}
 
-      <button onClick={() => {
-        onNextQuestion(selectedAnswer == correctAnswer)
-        setShuffledArray([]);
-        setSelectedAnswer(null);
+      <button disabled={selectedAnswer == null} onClick={() => {
+        if (selectedAnswer != null) {
+          onNextQuestion(selectedAnswer == correctAnswer)
+          setShuffledArray([]);
+          setSelectedAnswer(null);
+        }
       }}>Submit</button>
     </div>
   )

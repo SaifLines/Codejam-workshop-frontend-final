@@ -17,11 +17,10 @@ loadData()
 
 
 function App() {
-
-  const questionCount = 10;
-
   // if data is not yet loaded, tell react to show loading screen
   if (!data) throw promise;
+
+  const questionCount = data.results.length;
 
   const [questionIndex, setQuestionIndex] = useState(0)
   const [score, setScore] = useState(0)

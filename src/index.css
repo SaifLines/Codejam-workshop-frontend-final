@@ -29,6 +29,10 @@ button.selected {
   background: #014359;
 }
 
+button:disabled {
+  background: #444;
+}
+
 .question, .result {
   text-align: center;
 }
